@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
+import businessesReducer from './reducers/business';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-
+    bizz: businessesReducer
 })
 
 const persistConfig = {

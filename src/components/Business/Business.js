@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
 import { Col, Row } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
@@ -6,28 +7,20 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import Featured from './Featured/Featured'
 import Stories from './Stories/Stories'
 import Units from './Units/Units'
+import * as action from '../../store/actions/index';
 
 const business = React.memo((props) => {
     const showMore = () => {
         props.history.push('/category-page')
     }
+    // destructure props 
+    const { onFetchBusiness } = props
 
-    const coffee = <FontAwesomeIcon icon={faAngleRight} onClick={showMore}/>
+    const more = <FontAwesomeIcon icon={faAngleRight} onClick={showMore}/>
 
     useEffect(() => {
-        const url = "https://ipate.herokuapp.com/rest-api/v1/business"
-        fetch(url)
-            .then(response => {
-                return response.json()
-            })
-            .then(responseData => {
-                console.log(responseData);
-            })
-            .catch(error => {
-                console.log(error.response);
-            })
-
-    }, [])
+        onFetchBusiness();
+    }, [onFetchBusiness])
 
     return (
         <div>
@@ -36,8 +29,8 @@ const business = React.memo((props) => {
                 <Stories />
             </div>
             {/* featured businesses as horizontal flat list */}
-            <div style={{marginLeft: '20px', paddingTop: '10px'}}>
-                <h5 className="text-muted font-weight-bold">
+            <div style={{marginLeft: '20px', paddingTop: '5px'}}>
+                <h5 className="text-dark font-weight-bold">
                     featured
                 </h5>
             </div>
@@ -53,13 +46,13 @@ const business = React.memo((props) => {
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
                     <Col xs="6">
-                        <small className="text-muted font-weight-bold">
+                        <small className="text-dark font-weight-bold">
                             Hotels & Restaurants
                         </small>
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {coffee}
+                            {more}
                         </div>
                     </Col>
                 </Row>
@@ -69,13 +62,13 @@ const business = React.memo((props) => {
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
                     <Col xs="6">
-                        <small className="text-muted font-weight-bold">
+                        <small className="text-dark font-weight-bold">
                             Supermarkets
                         </small>
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {coffee}
+                            {more}
                         </div>
                     </Col>
                 </Row>
@@ -85,13 +78,13 @@ const business = React.memo((props) => {
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
                     <Col xs="6">
-                        <small className="text-muted font-weight-bold">
+                        <small className="text-dark font-weight-bold">
                             Gen Shops
                         </small>
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {coffee}
+                            {more}
                         </div>
                     </Col>
                 </Row>
@@ -101,13 +94,13 @@ const business = React.memo((props) => {
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
                     <Col xs="6">
-                        <small className="text-muted font-weight-bold">
+                        <small className="text-dark font-weight-bold">
                             Agrovets
                         </small>
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {coffee}
+                            {more}
                         </div>
                     </Col>
                 </Row>
@@ -117,13 +110,13 @@ const business = React.memo((props) => {
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
                     <Col xs="6">
-                        <small className="text-muted font-weight-bold">
+                        <small className="text-dark font-weight-bold">
                             Gyms
                         </small>
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {coffee}
+                            {more}
                         </div>
                     </Col>
                 </Row>
@@ -133,13 +126,13 @@ const business = React.memo((props) => {
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
                     <Col xs="6">
-                        <small className="text-muted font-weight-bold">
+                        <small className="text-dark font-weight-bold">
                             Wines & Spirits
                         </small>
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {coffee}
+                            {more}
                         </div>
                     </Col>
                 </Row>
@@ -150,4 +143,16 @@ const business = React.memo((props) => {
     );
 })
 
-export default business;
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapPropsToDispatch = dispatch => {
+    return {
+        onFetchBusiness: () => dispatch(action.initFetchBusiness())
+    }
+}
+
+export default connect(mapStateToProps, mapPropsToDispatch)(business);

@@ -1,19 +1,25 @@
 import React from 'react';
 import {
-    Card, CardBody, CardTitle, CardImg, CardText
+    Card, CardBody, CardImg, Row, Col
 } from 'reactstrap';
 
 const feature = props => {
     return (
-        <div>
-            <Card style={{marginLeft: '20px', width: '300px', height: '200px'}}>
-                <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
-                <CardBody>
-                    <CardTitle>Card Title</CardTitle>
-                    <CardText>ional content. This content is a little bit longer.</CardText>
-                    <CardText>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </CardText>
+        <div style={{marginLeft: '20px'}}>
+            <Card style={{width: '360px', height: '200px', overflow: 'hidden', borderRadius: '10px', border: '2px solid white'}}>
+                <CardImg top width="100%" style={{borderRadius: '10px'}} src={props.image} alt="Card image cap" />
+        </Card>
+        <Card style={{marginTop: '10px', border: '2px solid white'}}>
+            <CardBody style={{padding: '0px'}}>
+                <Row style={{padding: '0px'}}>
+                    <Col xs="3">
+                        <CardImg width="100%" src={props.image} style={{borderRadius: '4px', width: '50px', height: '50px'}} alt="Card image cap"/>
+                    </Col>
+                    <Col xs="9">
+                        <p style={{padding: '0px'}}><small >{props.Business_name}</small></p>
+                        <p style={{marginTop: '0px'}}><small>{props.Business_type}</small></p>
+                    </Col>
+                </Row>
             </CardBody>
         </Card>
         </div>

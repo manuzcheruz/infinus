@@ -1,17 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Feature from './Feature/Feature';
 
 const featured = props => {
     return (
         <div style={{display:'flex', flexDirection:'row', overflowX:'auto', overflowY: 'hidden'}}>
-            <Feature />
-            <Feature />
-            <Feature />
-            <Feature />
-            <Feature />
+            {props.businesses.filter(item => item.featured === true).slice(0,6).map((bizz, i) => {
+                return <Feature key={i} {...bizz}/>
+            })}
         </div>
     );
 }
 
-export default featured;
+const mapStateToProps = state => {
+    return {
+        businesses: state.bizz.businesses
+    }
+}
+
+export default connect(mapStateToProps)(featured);
