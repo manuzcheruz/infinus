@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 
 const feature = props => {
+    // console.log(props);
     return (
         <div style={{marginLeft: '20px'}}>
             <Card style={{width: '360px', height: '200px', overflow: 'hidden', borderRadius: '10px', border: '2px solid white'}}>
@@ -18,6 +19,7 @@ const feature = props => {
                     <Col xs="9">
                         <p style={{padding: '0px'}}><small >{props.Business_name}</small></p>
                         <p style={{marginTop: '0px'}}><small>{props.Business_type}</small></p>
+                        <p style={{marginTop: '0px'}}><small>{props.difference}</small></p>
                     </Col>
                 </Row>
             </CardBody>

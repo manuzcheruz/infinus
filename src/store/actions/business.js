@@ -6,7 +6,7 @@ export const fetchBusinessStart = () => {
     }
 }
 
-export const fetchBusinessSuccess = data => {
+export const fetchBusinessSuccess = (data) => {
     return {
         type: actionTypes.FETCH_BUSINESSES_SUCCESS,
         data: data

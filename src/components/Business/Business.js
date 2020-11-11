@@ -8,8 +8,10 @@ import Featured from './Featured/Featured'
 import Stories from './Stories/Stories'
 import Units from './Units/Units'
 import * as action from '../../store/actions/index';
+import Demo from './location/Location';
 
 const business = React.memo((props) => {
+
     const showMore = () => {
         props.history.push('/category-page')
     }
@@ -20,6 +22,7 @@ const business = React.memo((props) => {
 
     useEffect(() => {
         onFetchBusiness();
+        
     }, [onFetchBusiness])
 
     return (

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Switch, Route, Redirect} from 'react-router';
+import { usePosition } from 'use-position';
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
 
 import Travel from './components/Travel/Travel';
 import Business from './components/Business/Business';
@@ -8,7 +11,33 @@ import Blog from './components/Blog/Blog';
 import Layout from './hoc/Layout/Layout';
 import Categories from './components/Business/Categories/Categories';
 
-function App() {
+function App(props) {
+
+  const { onFindLocation, onFindLocationFail } = props
+  const watch = true;
+  const {
+    latitude,
+    longitude,
+    error
+  } = usePosition(watch);
+
+  // console.log(latitude);
+  // const test = (latitude, longitude) => {
+  //   let location = {
+  //     latitude: latitude,
+  //     longitude: longitude
+  //   }
+  //   console.log(location);
+  //   props.onFindLocation(location)
+  // }
+  useEffect(() => {
+    if ( latitude !== undefined ){
+      onFindLocation({latitude: latitude, longitude: longitude});
+    } else if (error !== undefined ) {
+      onFindLocationFail(error);
+    }
+  }, [latitude, longitude, error, onFindLocation, onFindLocationFail])
+
   return (
     <BrowserRouter>
       <div>
@@ -26,4 +55,11 @@ function App() {
   );
 }
 
-export default App;
+const mapPropsToDispatch = dispatch => {
+  return {
+    onFindLocation: (location) => dispatch(actions.findLocation(location)),
+    onFindLocationFail: (error) => dispatch(actions.findLocationFail(error))
+  }
+}
+
+export default connect(null, mapPropsToDispatch)(App);

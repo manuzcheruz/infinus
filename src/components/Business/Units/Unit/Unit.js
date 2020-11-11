@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Card, CardBody, CardTitle, CardImg, CardText, Row, Col
+    Card, CardBody, CardImg, Row, Col
 } from 'reactstrap';
 
 const unit = props => {
@@ -18,6 +18,7 @@ const unit = props => {
                     <Col xs="9">
                         <p style={{padding: '0px'}}><small >{props.Business_name}</small></p>
                         <p style={{marginTop: '0px'}}><small>{props.Business_type}</small></p>
+                        <p style={{marginTop: '0px'}}><small>{props.difference}</small></p>
                     </Col>
                 </Row>
             </CardBody>
