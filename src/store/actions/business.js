@@ -36,3 +36,10 @@ export const initFetchBusiness = () => {
             })
     }
 }
+
+export const businessDetailSlug = slug => {
+    return {
+        type: actionTypes.BUSINESS_DETAIL_SLUG,
+        slug: slug
+    }
+}

@@ -8,17 +8,15 @@ import Featured from './Featured/Featured'
 import Stories from './Stories/Stories'
 import Units from './Units/Units'
 import * as action from '../../store/actions/index';
-import Demo from './location/Location';
 
 const business = React.memo((props) => {
 
-    const showMore = () => {
+    const showMore = (cat) => {
         props.history.push('/category-page')
+        props.onSelectMore(cat)
     }
     // destructure props 
     const { onFetchBusiness } = props
-
-    const more = <FontAwesomeIcon icon={faAngleRight} onClick={showMore}/>
 
     useEffect(() => {
         onFetchBusiness();
@@ -55,12 +53,12 @@ const business = React.memo((props) => {
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {more}
+                            <FontAwesomeIcon icon={faAngleRight} onClick={e => showMore('hotel')}/>
                         </div>
                     </Col>
                 </Row>
             </div>
-            <Units />
+            <Units bizz_type="hotel" {...props}/>
 
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
@@ -71,12 +69,12 @@ const business = React.memo((props) => {
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {more}
+                            <FontAwesomeIcon icon={faAngleRight} onClick={e => showMore('supermarket')}/>
                         </div>
                     </Col>
                 </Row>
             </div>
-            <Units />
+            <Units bizz_type="supermarket" {...props}/>
 
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
@@ -87,12 +85,12 @@ const business = React.memo((props) => {
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {more}
+                            <FontAwesomeIcon icon={faAngleRight} onClick={e => showMore('general')}/>
                         </div>
                     </Col>
                 </Row>
             </div>
-            <Units />
+            <Units bizz_type="general" {...props}/>
 
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
@@ -103,12 +101,12 @@ const business = React.memo((props) => {
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {more}
+                            <FontAwesomeIcon icon={faAngleRight} onClick={e => showMore('agrovets')}/>
                         </div>
                     </Col>
                 </Row>
             </div>
-            <Units />
+            <Units bizz_type="agrovets" {...props}/>
 
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
@@ -119,12 +117,12 @@ const business = React.memo((props) => {
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {more}
+                            <FontAwesomeIcon icon={faAngleRight} onClick={e => showMore('gym')}/>
                         </div>
                     </Col>
                 </Row>
             </div>
-            <Units />
+            <Units bizz_type="gym" {...props}/>
 
             <div style={{marginLeft: '20px', paddingTop: '10px'}}>
                 <Row>
@@ -135,12 +133,12 @@ const business = React.memo((props) => {
                     </Col>
                     <Col xs="6">
                         <div className="text-right">
-                            {more}
+                            <FontAwesomeIcon icon={faAngleRight} onClick={e => showMore('wine')}/>
                         </div>
                     </Col>
                 </Row>
             </div>
-            <Units />
+            <Units bizz_type="wine" {...props}/>
 
         </div>
     );
@@ -154,7 +152,8 @@ const mapStateToProps = state => {
 
 const mapPropsToDispatch = dispatch => {
     return {
-        onFetchBusiness: () => dispatch(action.initFetchBusiness())
+        onFetchBusiness: () => dispatch(action.initFetchBusiness()),
+        onSelectMore: (name) => dispatch(action.categoryName(name))
     }
 }
 

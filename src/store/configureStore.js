@@ -4,11 +4,15 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 import businessesReducer from './reducers/business';
+import categoryReducer from './reducers/category';
+import productReducer from './reducers/product';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    bizz: businessesReducer
+    bizz: businessesReducer,
+    category: categoryReducer,
+    products: productReducer
 })
 
 const persistConfig = {

@@ -10,6 +10,7 @@ import Business from './components/Business/Business';
 import Blog from './components/Blog/Blog';
 import Layout from './hoc/Layout/Layout';
 import Categories from './components/Business/Categories/Categories';
+import BusinessDetail from './components/Business/FullBusiness/FullBusiness';
 
 function App(props) {
 
@@ -46,6 +47,7 @@ function App(props) {
             <Route path="/travel" exact component={Travel} />
             <Route path="/blog" exact component={Blog} />
             <Route path="/category-page" exact component={Categories} />
+            <Route path="/business-detail" exact component={BusinessDetail} />
             <Route path="/" exact component={Business} />
             <Redirect to="/" />
           </Switch>

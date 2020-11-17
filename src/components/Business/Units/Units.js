@@ -7,7 +7,7 @@ import Unit from './Unit/Unit';
 const units = props => {
     let categoryBlock = ''
     if (props.userLocation) {
-        let bizz = props.businesses.slice(0,5)
+        let bizz = props.businesses.filter(item => item.Business_type === props.bizz_type).slice(0,5)
          for (let item of bizz) {
                 let loc = item.location
                 var regExp = /\(([^)]+)\)/;
@@ -42,13 +42,13 @@ const units = props => {
             }
         categoryBlock = <div style={{marginTop: '10px' , display:'flex', flexDirection:'row', overflowX:'auto', overflowY: 'hidden'}}>
             {bizz.map((bizz, i) => {
-                return <Unit key={i} {...bizz}/>
+                return <Unit key={i} {...bizz} {...props}/>
             })}
         </div>
     } else {
         categoryBlock = <div style={{marginTop: '10px' , display:'flex', flexDirection:'row', overflowX:'auto', overflowY: 'hidden'}}>
             {props.businesses.slice(0,5).map((bizz, i) => {
-                return <Unit key={i} {...bizz}/>
+                return <Unit key={i} {...bizz} {...props}/>
             })}
         </div>
     }
