@@ -26,6 +26,11 @@ const reducer = (state = initialState, action) => {
                 error: action.error,
                 fetchProductStart: false
             }
+        case actionTypes.PRODUCT_DETAIL_SLUG:
+            return {
+                ...state,
+                productSlug: action.slug
+            }
         default:
             return state
     }

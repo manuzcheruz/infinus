@@ -14,5 +14,6 @@ export {
 } from './category';
 
 export {
-    initFetchProducts
+    initFetchProducts,
+    productSlug
 } from './product';

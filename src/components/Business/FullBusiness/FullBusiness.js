@@ -7,6 +7,7 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Skeleton from 'react-loading-skeleton';
 import { getDistance } from 'geolib';
 import * as actions from '../../../store/actions/index';
+import Products from './Products/Products';
 
 const businessDetail = React.memo((props) => {
     const [activeTab, setActiveTab] = useState('1');
@@ -118,7 +119,7 @@ const businessDetail = React.memo((props) => {
                             </div>
                         </TabPane>
                         <TabPane tabId="2">
-                            <h1>products</h1>
+                            <Products history={props.history} />
                         </TabPane>
                         <TabPane tabId="3">
                             <Map
@@ -144,7 +145,8 @@ const mapStateToProps = state => {
     return {
         bizz: state.bizz.businesses,
         slug: state.category.businessSlug,
-        userLocation: state.bizz.userLoc
+        userLocation: state.bizz.userLoc,
+        products: state.products.products
     }
 }
 

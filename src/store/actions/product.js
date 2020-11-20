@@ -23,10 +23,9 @@ export const fetchProductsFail = error => {
 export const initFetchProducts = () => {
     return dispatch => {
         dispatch(fetchProductsStart())
-        const url = 'https://ipate.herokuapp.com/rest-api/v1/products'
+        const url = 'http://127.0.0.1:8000/rest-api/v1/products'
         fetch(url)
             .then(response => {
-                console.log(response.json());
                 return response.json()
             })
             .then(responseData => {
@@ -35,6 +34,13 @@ export const initFetchProducts = () => {
             .catch(error => {
                 dispatch(fetchProductsFail(error))
             })
+    }
+}
+
+export const productSlug = slug => {
+    return {
+        type: actionTypes.PRODUCT_DETAIL_SLUG,
+        slug: slug
     }
 }
 

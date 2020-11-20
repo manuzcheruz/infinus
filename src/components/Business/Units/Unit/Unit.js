@@ -27,7 +27,8 @@ const unit = props => {
     return (
         <div style={{marginLeft: '20px'}} onClick={e => clicked(props.slug)}>
             <Card style={{height: '130px', width: '230px', borderRadius: '10px', overflow: 'hidden', ...cardDimensions}}>
-                <CardImg top width="100%" src={props.image || <Skeleton count={5}/>} style={{borderRadius: '10px'}} alt="Card image cap" />
+                <CardImg top width="100%" src={props.image || <Skeleton height={130} width={230} />} style={{borderRadius: '10px'}} alt="Card image cap" />
+                {/* <Skeleton height={130} width={230} /> */}
         </Card>
         <Card style={{marginTop: '10px', border: '2px solid white'}}>
             <CardBody style={{padding: '0px'}}>

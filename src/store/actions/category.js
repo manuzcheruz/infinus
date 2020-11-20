@@ -30,7 +30,7 @@ export const fetchBusinessesInCategoryFail = error => {
 export const initFetchBusinessesInCategory = (name) => {
     return dispatch => {
         dispatch(fetchBusinessesInCategoryStart())
-        const url = 'https://ipate.herokuapp.com/rest-api/v1/business'
+        const url = 'http://127.0.0.1:8000/rest-api/v1/business'
         fetch(url)
             .then(response => {
                 return response.json()

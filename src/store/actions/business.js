@@ -23,7 +23,7 @@ export const fetchBusinessFail = error => {
 export const initFetchBusiness = () => {
     return dispatch => {
         dispatch(fetchBusinessStart())
-        const url = 'https://ipate.herokuapp.com/rest-api/v1/business'
+        const url = 'https://3933f3a1370f.ngrok.io/rest-api/v1/business'
         fetch(url)
             .then(repsonse => {
                 return repsonse.json()
